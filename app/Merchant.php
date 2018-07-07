@@ -15,8 +15,8 @@ class Merchant extends Model
      */
 
     protected $fillable = [
-        'id', 'merchant_id', 'merchant_name', 'merchant_address', 'merchant_phone', 'merchant_admin',
-        'merchant_contact', 'merchant_mail', 'merchant_description', 'enable', 'created_at', 'updated_at', 'deleted_at',
+        'id', 'merchant_id', 'merchant_name', 'secret_key','merchant_description',
+        'customer_id', 'enable', 'created_at', 'updated_at', 'deleted_at',
     ];
 
     /**
@@ -46,4 +46,10 @@ class Merchant extends Model
     {
         return $this->hasMany('App\Reader', 'merchant_id');
     }
+
+    public function customers()
+    {
+        return $this->belongsTo('App\Customer');
+    }
+
 }

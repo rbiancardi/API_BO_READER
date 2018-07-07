@@ -34,6 +34,7 @@ class User extends Authenticatable
         public function merchants()
         {
             return $this->belongsToMany('App\Merchant');
+            
         }
 
         public function userTypes()

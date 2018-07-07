@@ -21,7 +21,7 @@ class Reader extends Model
     ];
 
 
-    public function merchant()
+    public function merchants()
     {
         return $this->belongsTo('App\Merchant', 'id');
     }

@@ -15,7 +15,7 @@ class BranchSector extends Model
      */
 
     protected $fillable = [
-        'id', 'sector_name', 'sector_description', 'branch_id',
+        'id', 'sector_name', 'branchSector_id', 'branch_id',
         'enable', 'created_at', 'updated_at', 'deleted_at',
     ];
 
@@ -32,8 +32,8 @@ class BranchSector extends Model
     }
 
     public function products()
-    {
-        return $this->belongsToMany('App\Product');
+    {                                                //Tabla Pivot             Foreign Key      Local Key
+        return $this->belongsToMany('App\Product', 'branch_sector_product', 'branchSector_id', 'product_id');
     }
 
 }

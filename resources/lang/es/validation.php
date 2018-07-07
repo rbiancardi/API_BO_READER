@@ -101,9 +101,55 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        
+        'barcode' => [
+			'min' => 'El codigo de barras debe contener al menos 4 numeros',
+            'numeric' => 'El codigo de barras solo debe contener numeros',
+            'required' => 'El codigo de barras es obligatorio, debe  ingresarlo menos uno para poder continuar',
         ],
+        
+
+        'id' => [
+            'numeric' => 'El Id de una transaccion solo debe contener numeros',
+            'required' => 'El Id es obligatorio para esta busqueda',
+        ],
+        
+        'daterange' => [
+            'required' => 'El rango de Fechas es obligatorio para esta busqueda',
+        ],
+
+        'description' => [
+			'min' => 'La descripcion debe contener al menos 10 caracteres',
+            'required' => 'La descripcion es obligatoria, debe ingresarla para poder continuar',
+        ],
+
+        'currency' => [
+            'required' => 'La moneda es obligatoria, debe  ingresar al menos una para poder continuar',
+
+        ],
+
+        'Merchants' => [
+            'required' => 'La moneda es obligatoria, debe  ingresar al menos una para poder continuar',
+
+        ],
+
+        'sectors' => [
+			'min' => 'El sector debe contener al menos 4 caracteres',
+            'required' => 'El sector es obligatorio, debe  ingresar al menos uno para poder continuar',
+        ],
+
+        'branchs' => [
+			'min' => 'EL nombre de la sucursal debe contener al menos 4 caracteres',
+            'required' => 'La suscursal es obligatoria, debe  ingresar al menos una para poder continuar',
+        ],
+        
+        'price' => [
+			'min' => 'EL Precio debe contener al menos 3 caracteres',
+            'required' => 'El Precio es obligatorio, debe ingresarlo para poder continuar',
+            'numeric' => 'El precio debe contener decimales, utilizando el punto (.) como separador decimal',
+        ],
+        
+
     ],
 
     /*

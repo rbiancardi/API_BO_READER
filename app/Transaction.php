@@ -11,7 +11,7 @@ class Transaction extends Model
     protected $fillable = [
         'id','reader_name', 'barcode', 'product_description',
         'product_currency','product_price','merchant_id',
-        'transaction_type','trx_result','trx_result_extended',
+        'transaction_type','trx_result_code','trx_result','trx_result_extended',
         'branch_name','sector_name','trx_user','reader_ip','trx_ip',
         'created_at', 'updated_at', 'deleted_at'
     ];

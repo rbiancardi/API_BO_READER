@@ -13,7 +13,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
         "laraveles/spanish": "^1.0",
-        "yajra/laravel-datatables-oracle": "~8.0"
+        "yajra/laravel-datatables-oracle": "~8.0",
+        "nesbot/carbon": "~1.25"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

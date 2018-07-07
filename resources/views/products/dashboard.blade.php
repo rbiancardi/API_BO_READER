@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
- Dashboard - Transactions
+ Dashboard - Productos
 @endsection
 @section('stylesheets')
 {!!Html::style('https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css' ) !!}
@@ -24,9 +24,9 @@
         <span class="count_bottom">Comercios Disponibles</span>
       </div>
       <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" align="center">
-        <span class="count_top"><i class="fas fa-store-alt"></i> Merchants Deshabilitados</span>
-      <div class="count red">{{$merchDisable}}</div>
-      <span class="count_bottom"><i class="red">{{$merchPercentage}}%</i> del Total</span>
+        <span class="count_top"><i class="fas fa-store-alt"></i> Productos Deshabilitados</span>
+      <div class="count red">{{$productDisable}}</div>
+      <span class="count_bottom"><i class="red">{{$productPercentage}}%</i> del Total</span>
       </div>
       
       <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" align="center">
@@ -105,7 +105,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Reporte de Transacciones <small>- (Ultimos 30 días) -</small></h2>
+                      <h2>Reporte de Transacciones <small>- (Ultimos 60 días) -</small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -147,7 +147,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                    @if(isset($trxTable))   
+                    @if(isset($trxProducts))    
                         @foreach ($trxTable as $table)
                         <tr>
                           <td>{{$table->id}}</td>
@@ -214,7 +214,6 @@ $(document).ready(function() {
             'copy', 'csv', 'excel', 'print'
         ],
         responsive: true,
-        "order": [[ 0, "desc" ]]
     } );
 
     table.buttons().container()

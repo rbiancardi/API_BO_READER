@@ -37,7 +37,7 @@ class BranchOffice extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('App\Product', 'branchOffice_product', 'branchOffice_id', 'product_id');
     }
 
 }

@@ -20,7 +20,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{url('/dashboard')}}" class="site_title"><img src="primerBit/img/logo_t.jpg" alt="Siempre es Mejor ser el Primero" 
+              <a href="{{route('dashboard')}}" class="site_title"><img src="{{asset('primerBit/img/logo_t.jpg')}}" alt="Siempre es Mejor ser el Primero" 
                 height="34" width="34"></i> <span>Barcode Reader</span></a>
             </div>
 
@@ -44,7 +44,7 @@
             <!-- /sidebar menu -->
             
           </div>
-        </div>
+        </div> 
 
         <!-- top navigation -->
         
