@@ -63,8 +63,8 @@ class DashboardController extends Controller
     public function trxCount()
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
         $trx = Transaction::whereIn('merchant_id', $merchUsr)->count();
 
         return $trx;
@@ -74,8 +74,8 @@ class DashboardController extends Controller
     public function merchantCount()
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants()->where('enable', '1')->count();
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants()->where('enable', '1')->count();
 
         return $merchUsr;
 
@@ -84,8 +84,8 @@ class DashboardController extends Controller
     public function readerCount()
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('id');
         $readers = Reader::whereIn('merchant_id', $merchUsr)->count();
 
         return $readers;
@@ -94,8 +94,8 @@ class DashboardController extends Controller
 
     public function readerDisable()
     {
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('id');
         $readers = Reader::whereIn('merchant_id', $merchUsr)->where('enable', '0')->count();
 
         return $readers;
@@ -103,8 +103,8 @@ class DashboardController extends Controller
 
     public function readerPercentage()
     {
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('id');
         $readers = Reader::whereIn('merchant_id', $merchUsr)->count();
         $readerDisable = $this->readerDisable();
         $activeReaders =  $readers -  $readerDisable;
@@ -117,8 +117,8 @@ class DashboardController extends Controller
     public function merchantDisable()
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchDisable = User::find($id[0])->merchants()->where('enable', '0')->count();
+        $id = Auth::user()->id;
+        $merchDisable = User::find($id)->merchants()->where('enable', '0')->count();
 
         return $merchDisable;
 
@@ -126,8 +126,8 @@ class DashboardController extends Controller
 
     public function merchantPercentage()
     {
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants()->count();
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants()->count();
         $merchDisable = $this->merchantDisable();
 
         $merchPercentage = round(($merchDisable * 100) / $merchUsr, 2);
@@ -140,8 +140,8 @@ class DashboardController extends Controller
     public function branchCount()
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('id');
         $branch = BranchOffice::whereIn('merchant_id', $merchUsr)->count();
 
         return $branch;
@@ -151,8 +151,8 @@ class DashboardController extends Controller
     public function productCount()
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('id');
         $product = MerchantProduct::whereIn('merchant_id', $merchUsr)->count();
         return $product;
 
@@ -164,8 +164,8 @@ class DashboardController extends Controller
 
         $date = \Carbon\Carbon::today()->subDays(30);
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
         $trxTable = Transaction::all()->whereIn('merchant_id', $merchUsr)
         ->where('created_at', '>=', date($date))->sortByDesc('id');
      
@@ -176,8 +176,8 @@ class DashboardController extends Controller
     public function trxOk(){
 
         $date = \Carbon\Carbon::today()->subDays(90);
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
         $trxOk = Transaction::whereIn('merchant_id', $merchUsr)
         ->where('created_at', '>=', date($date))->where('trx_result_code', '=', '0')->count();
         
@@ -189,8 +189,8 @@ class DashboardController extends Controller
     public function trxNOk(){
 
         $date = \Carbon\Carbon::today()->subDays(90);
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
         $trxNOk = Transaction::whereIn('merchant_id', $merchUsr)
         ->where('created_at', '>=', date($date))->where('trx_result_code', '<>', '0')->count();
         
@@ -204,8 +204,8 @@ class DashboardController extends Controller
         
         $date = \Carbon\Carbon::today()->subDays(90);
         $merchant_id = Auth::user()->merchant_id;
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
 
         $branch = DB::table('transactions')
              ->select(DB::raw('count(transactions.branch_name) as total, branch_name'))
@@ -225,8 +225,8 @@ class DashboardController extends Controller
         $date = \Carbon\Carbon::today()->subDays(90);
 
         $merchant_id = Auth::user()->merchant_id;
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
 
         $topEan = DB::table('transactions')
         ->join('products', 'transactions.barcode', '=' , 'products.barcode' )
@@ -244,8 +244,8 @@ class DashboardController extends Controller
 
         $date = \Carbon\Carbon::today()->subDays(90);
         $merchant_id = Auth::user()->merchant_id;
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
 
         $topVdp = DB::table('transactions')
              ->select(DB::raw('count(transactions.reader_name) as total, reader_name'))

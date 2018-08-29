@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-Editar Productos
+Lista de Sectores
 @endsection
 @section('stylesheets')
 {!!Html::style('https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css' ) !!}
@@ -22,11 +22,12 @@ Editar Productos
     </div>
 
           <div class="row">
-
+            @include('layouts.partials.requestErrors')
+            @include('layouts.partials.success')
               <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Modificar la informacion de los Productos </h2>
+                      <h2>Listado de los Sectores que se encuentran disponibles y habilitados </h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -37,45 +38,41 @@ Editar Productos
                     </div>
                     <div class="x_content">
                       <p class="text-muted font-13 m-b-30">
-                       Productos pertenecientes a todos los merchant_id que se encuentren habilitados en nuestra plataforma
+                       Sectores pertenecientes a todos los merchant_id que se encuentren habilitados en nuestra plataforma
                         para el usuario <b>{{Auth::user()->name}} {{Auth::user()->last_name}}</b>.
                       </p>
                       <p>
-                          <h4>Exportar Todos los Productos</h4>
+                          <h4>Exportar Todos los Sectores</h4>
                       </p>
           
                    <div class="table-responsive">
                   <!--   <table id="transactions" class="table table-striped table-bordered">-->
-                     <table id="products" class="display nowrap" cellspacing="0" width="100%">
+                     <table id="sectors" class="display nowrap" cellspacing="0" width="100%">
                       <thead>
                           <tr>
                             <th nowrap>ID</th>
-                            <th nowrap>BARCODE</th>
+                            <th nowrap>NOMBRE</th>
                             <th nowrap>DESCRIPCION</th>
                             <th nowrap>FECHA DE CREACION</th>
                             <th nowrap>CREADO POR</th>
                             <th nowrap>ULTIMA ACTUALIZACION</th>
                             <th nowrap>ACTUALIZADO POR</th>
-                            <th nowrap>EDITAR</th>
-                              
                           </tr>
                       </thead>
                       <tbody>
 
                          
-                      @if(isset($products))   
+                      @if(isset($sectors))   
                        
-                        @foreach ($products as $product)
+                        @foreach ($sectors as $sectors)
                         <tr>
-                            <td>{{$product->id}}</td>
-                            <td>{{$product->barcode}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->created_at}}</td>
-                            <td>{{$product->user_creator}}</td>
-                            <td>{{$product->updated_at}}</td>
-                            <td>{{$product->updated_by}}</td>
-                           {{--<td><a href="{{route('ProductEdit', $product->id)}}" class="btn btn-warning glyphicon glyphicon-wrench"></a></td> --}} 
-                           <td><a href="{{route('ProductEdit', $product->id)}}" class="btn btn-warning glyphicon glyphicon-wrench" ></a></td>
+                            <td>{{$sectors->id}}</td>
+                            <td>{{$sectors->sector_name}}</td>
+                            <td>{{$sectors->sector_description}}</td>
+                            <td>{{$sectors->created_at}}</td>
+                            <td>{{$sectors->user_creator}}</td>
+                            <td>{{$sectors->updated_at}}</td>
+                            <td>{{$sectors->updated_by}}</td>
                         </tr>
                       @endforeach
                     @endif     
@@ -119,7 +116,7 @@ Editar Productos
 <script type="text/javascript">
 
 $(document).ready(function() {
-    $('#products').DataTable( {
+    $('#sectors').DataTable( {
        
         dom: 'Bfrtip',
         buttons: [
@@ -130,7 +127,7 @@ $(document).ready(function() {
     } );
 
     table.buttons().container()
-        .insertBefore( '#products' );
+        .insertBefore( '#sectors' );
 } );
 
 </script>

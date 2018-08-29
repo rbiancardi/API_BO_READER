@@ -46,8 +46,8 @@ class TransactionController extends Controller
         $barcode = $request->barcode;
         $daterange = request()->daterange;
         $db_range = explode('A', $daterange);
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
         $from = trim($db_range[0]);
         $to = trim($db_range[1]);
 
@@ -106,8 +106,8 @@ class TransactionController extends Controller
     public function trx_range($db_range)
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
         /*$trxOk = Transaction::whereIn('merchant_id', $merchUsr)
         ->where('created_at', '>=', date($date))->where('trx_result_code', '=', '0')->count();*/
 
@@ -125,9 +125,9 @@ class TransactionController extends Controller
     public function trxBranchReader($db_range, $branch, $reader)
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsrId = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsrId = User::find($id)->merchants->where('enable', '1')->pluck('id');
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
         $from = trim($db_range[0]);
         $to = trim($db_range[1]);
 
@@ -177,8 +177,8 @@ class TransactionController extends Controller
     public function searchTrxReaderBranch(Request $request)
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('id');
         $branchOffices = BranchOffice::whereIn('merchant_id', $merchUsr)->get();
         $branch = $branchOffices->sortBy('id');
         $merchReader = Reader::whereIn('merchant_id', $merchUsr)->get();
@@ -210,9 +210,9 @@ class TransactionController extends Controller
     public function customSearch(Request $request)
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
-        $merchants = User::find($id[0])->merchants->where('enable', '1');    
+        $id = Auth::user()->id;
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('id');
+        $merchants = User::find($id)->merchants->where('enable', '1');    
         $branchOffices = BranchOffice::whereIn('merchant_id', $merchUsr)->get();
         $branch = $branchOffices->sortBy('id');
         $merchReader = Reader::whereIn('merchant_id', $merchUsr)->get();
@@ -252,9 +252,9 @@ class TransactionController extends Controller
     public function trxCustomSearch($state, $cbo_reader, $cbo_branch, $merchantId, $db_range)
     {
 
-        $id = Auth::user()->pluck('id');
-        $merchUsrId = User::find($id[0])->merchants->where('enable', '1')->pluck('id');
-        $merchUsr = User::find($id[0])->merchants->where('enable', '1')->pluck('merchant_id');
+        $id = Auth::user()->id;
+        $merchUsrId = User::find($id)->merchants->where('enable', '1')->pluck('id');
+        $merchUsr = User::find($id)->merchants->where('enable', '1')->pluck('merchant_id');
         $from = trim($db_range[0]);
         $to = trim($db_range[1]);
         $readers = Reader::whereIn('merchant_id', $merchUsrId)->pluck('reader_name');

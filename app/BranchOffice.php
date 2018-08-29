@@ -16,8 +16,8 @@ class BranchOffice extends Model
      */
 
     protected $fillable = [
-        'id', 'branch_id', 'branch_name', 'merchant_id', 'branch_name',
-        'branch_country', 'branch_location', 'enable', 'created_at', 'updated_at', 'deleted_at',
+        'id', 'branch_id', 'branch_name', 'merchant_id', 'branch_country', 'branch_province', 'branch_county',
+        'branch_localities', 'user_creator', 'updated_by', 'enable', 'created_at', 'updated_at'
     ];
 
     public function merchants()
@@ -32,7 +32,7 @@ class BranchOffice extends Model
 
     public function branchSectors()
     {
-        return $this->hasMany('App\BranchSector', 'branch_id');
+        return $this->belongsToMany('App\BranchSector', 'branchOffices_branchSectors', 'branchOffices_Id', 'branchSectors_id');
     }
 
     public function products()

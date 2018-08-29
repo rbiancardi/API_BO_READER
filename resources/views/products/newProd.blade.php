@@ -24,6 +24,10 @@
 
 
             <div class="col-md-12 col-sm-12 col-xs-12" >
+                    <div class="x_title">
+                            <h2>Alta de Productos </h2>
+                          </br></br>
+                          </div>
 
                 {{ Form::open(array('id' => 'searchTrxId', 'class' => 'form-group' , 'action' => 'ProductController@store')) }}
 

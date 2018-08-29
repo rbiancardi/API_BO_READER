@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-Editar Productos
+Lista de Sucursales
 @endsection
 @section('stylesheets')
 {!!Html::style('https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css' ) !!}
@@ -22,11 +22,13 @@ Editar Productos
     </div>
 
           <div class="row">
-
+            @include('layouts.partials.requestErrors')
+            @include('layouts.partials.success')
+            
               <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Modificar la informacion de los Productos </h2>
+                      <h2>Listado de las Sucursales que se encuentran disponibles y habilitadas</h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -37,45 +39,45 @@ Editar Productos
                     </div>
                     <div class="x_content">
                       <p class="text-muted font-13 m-b-30">
-                       Productos pertenecientes a todos los merchant_id que se encuentren habilitados en nuestra plataforma
-                        para el usuario <b>{{Auth::user()->name}} {{Auth::user()->last_name}}</b>.
+                       Sucursales pertenecientes a todos los merchant_id que se encuentren habilitados en nuestra plataforma
+                        para el usuario <b>{{Auth::user()->name}} {{Auth::user()->last_name}}</b>. 
                       </p>
                       <p>
-                          <h4>Exportar Todos los Productos</h4>
+                          <h4>Exportar la lista de Sucursales</h4>
                       </p>
           
                    <div class="table-responsive">
                   <!--   <table id="transactions" class="table table-striped table-bordered">-->
-                     <table id="products" class="display nowrap" cellspacing="0" width="100%">
+                     <table id="readers" class="display nowrap" cellspacing="0" width="100%">
                       <thead>
                           <tr>
                             <th nowrap>ID</th>
-                            <th nowrap>BARCODE</th>
-                            <th nowrap>DESCRIPCION</th>
-                            <th nowrap>FECHA DE CREACION</th>
-                            <th nowrap>CREADO POR</th>
-                            <th nowrap>ULTIMA ACTUALIZACION</th>
-                            <th nowrap>ACTUALIZADO POR</th>
-                            <th nowrap>EDITAR</th>
-                              
+                            <th nowrap>NOMBRE</th>
+                            <th nowrap>MERCHANT ID</th>
+                            <th nowrap>PAIS</th>
+                            <th nowrap>PROVINCIA</th>
+                            <th nowrap>PARTIDO</th>
+                            <th nowrap>LOCALIDAD</th>
+                            <th nowrap>FECHA DE ALTA</th>
+                            <th nowrap>CREADA POR</th>
                           </tr>
                       </thead>
                       <tbody>
 
                          
-                      @if(isset($products))   
+                      @if(isset($branchs))   
                        
-                        @foreach ($products as $product)
+                        @foreach ($branchs as $branch)
                         <tr>
-                            <td>{{$product->id}}</td>
-                            <td>{{$product->barcode}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->created_at}}</td>
-                            <td>{{$product->user_creator}}</td>
-                            <td>{{$product->updated_at}}</td>
-                            <td>{{$product->updated_by}}</td>
-                           {{--<td><a href="{{route('ProductEdit', $product->id)}}" class="btn btn-warning glyphicon glyphicon-wrench"></a></td> --}} 
-                           <td><a href="{{route('ProductEdit', $product->id)}}" class="btn btn-warning glyphicon glyphicon-wrench" ></a></td>
+                            <td>{{$branch->branch_id}}</td>
+                            <td>{{$branch->branch_name}}</td>
+                            <td>{{$branch->merchant_id}}</td>
+                            <td>{{$branch->branch_country}}</td>
+                            <td>{{$branch->branch_province}}</td>
+                            <td>{{$branch->branch_county}}</td>
+                            <td>{{$branch->branch_localities}}</td>
+                            <td>{{$branch->created_at}}</td>
+                            <td>{{$branch->user_creator}}</td>
                         </tr>
                       @endforeach
                     @endif     
@@ -119,18 +121,18 @@ Editar Productos
 <script type="text/javascript">
 
 $(document).ready(function() {
-    $('#products').DataTable( {
+    $('#readers').DataTable( {
        
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'print'
         ],
         responsive: true,
-        "order": [[ 0, "desc" ]]
+        "order": [[ 7, "desc" ]]
     } );
 
     table.buttons().container()
-        .insertBefore( '#products' );
+        .insertBefore( '#readers' );
 } );
 
 </script>

@@ -46,14 +46,15 @@ Editar Productos
           
                    <div class="table-responsive">
                   <!--   <table id="transactions" class="table table-striped table-bordered">-->
-                     <table id="products" class="display nowrap" cellspacing="0" width="100%">
+                     <table id="readers" class="display nowrap" cellspacing="0" width="100%">
                       <thead>
                           <tr>
                             <th nowrap>ID</th>
-                            <th nowrap>BARCODE</th>
-                            <th nowrap>DESCRIPCION</th>
-                            <th nowrap>FECHA DE CREACION</th>
-                            <th nowrap>CREADO POR</th>
+                            <th nowrap>NOMBRE</th>
+                            <th nowrap>MERCHANT ID</th>
+                            <th nowrap>SUCURSAL</th>
+                            <th nowrap>SECTOR</th>
+                            <th nowrap>DIR. IP</th>
                             <th nowrap>ULTIMA ACTUALIZACION</th>
                             <th nowrap>ACTUALIZADO POR</th>
                             <th nowrap>EDITAR</th>
@@ -63,19 +64,20 @@ Editar Productos
                       <tbody>
 
                          
-                      @if(isset($products))   
+                      @if(isset($readers))   
                        
-                        @foreach ($products as $product)
+                        @foreach ($readers as $reader)
                         <tr>
-                            <td>{{$product->id}}</td>
-                            <td>{{$product->barcode}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->created_at}}</td>
-                            <td>{{$product->user_creator}}</td>
-                            <td>{{$product->updated_at}}</td>
-                            <td>{{$product->updated_by}}</td>
+                            <td>{{$reader->id}}</td>
+                            <td>{{$reader->reader_name}}</td>
+                            <td>{{$reader->merchant_id}}</td>
+                            <td>{{$reader->branch_id}}</td>
+                            <td>{{$reader->branchSector_id}}</td>
+                            <td>{{$reader->reader_ip}}</td>
+                            <td>{{$reader->updated_at}}</td>
+                            <td>{{$reader->updated_by}}</td>
                            {{--<td><a href="{{route('ProductEdit', $product->id)}}" class="btn btn-warning glyphicon glyphicon-wrench"></a></td> --}} 
-                           <td><a href="{{route('ProductEdit', $product->id)}}" class="btn btn-warning glyphicon glyphicon-wrench" ></a></td>
+                           <td><a href="{{route('ReaderEdit', $reader->id)}}" class="btn btn-warning glyphicon glyphicon-wrench" ></a></td>
                         </tr>
                       @endforeach
                     @endif     
@@ -119,7 +121,7 @@ Editar Productos
 <script type="text/javascript">
 
 $(document).ready(function() {
-    $('#products').DataTable( {
+    $('#readers').DataTable( {
        
         dom: 'Bfrtip',
         buttons: [
@@ -130,7 +132,7 @@ $(document).ready(function() {
     } );
 
     table.buttons().container()
-        .insertBefore( '#products' );
+        .insertBefore( '#readers' );
 } );
 
 </script>

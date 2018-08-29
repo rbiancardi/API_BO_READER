@@ -149,6 +149,36 @@ return [
             'numeric' => 'El precio debe contener decimales, utilizando el punto (.) como separador decimal',
         ],
         
+        'reader_name' => [
+			'unique' => 'Ya se encuentra dado de alta un Verificador con ese nombre',
+        ],
+
+        'branch_id' => [ 'required' => 'El Identificado de la Sucursal es obligatorio, debe ingresarlo para poder continuar',
+                        'unique' => 'Ya se encuentra dada de alta una Sucursal con ese identificador',
+
+        ],
+        'branch_name' => [ 'required' => 'El Nombre de la Sucursal es obligatorio, debe ingresarlo para poder continuar',
+                           'unique' => 'Ya se encuentra dada de alta una Sucursal con ese nombre',
+        ],
+
+        'country' => [ 'required' => 'El País de la Sucursal es obligatorio, debe ingresarlo para poder continuar',
+
+        ],
+        'province' => [ 'required' => 'La Provincia de la Sucursal es obligatorio, debe ingresarlo para poder continuar',
+
+        ],
+        'county' => [ 'required' => 'El Partido de la Sucursal es obligatorio, debe ingresarlo para poder continuar',
+
+        ],
+
+        'locality' => [ 'required' => 'La Localidad de la Sucursal es obligatorio, debe ingresarlo para poder continuar',
+
+        ],
+
+        'merchants' => [ 'required' => 'El Merchant ID de la Sucursal es obligatorio, debe ingresarlo para poder continuar',
+
+        ],
+
 
     ],
 

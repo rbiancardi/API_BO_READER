@@ -17,7 +17,7 @@ class Reader extends Model
 
     protected $fillable = [
         'id', 'reader_name','merchant_id', 'branch_id','branchSector_id', 'reader_ip',
-         'enable', 'created_at', 'updated_at', 'deleted_at',
+         'enable', 'created_by', 'updated_by','created_at', 'updated_at', 'deleted_at',
     ];
 
 
@@ -29,7 +29,7 @@ class Reader extends Model
     
     public function branchSector()
     {
-        return $this->belongsTo('App\BranchSector', 'id', 'branchSector_id');
+        return $this->belongsTo('App\BranchSector', 'branchSector_id', 'id');
     }
 
     public function branchOffice()

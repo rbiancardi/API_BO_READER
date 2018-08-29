@@ -17,10 +17,11 @@
     <body>
         
         <div class="login-container">
-        
+            
              <div class="login-box animated fadeInDown">
                 <div class="login-logo"></div>
                 <div class="login-body">
+                   
                     <div class="login-title"><strong>Bienvenido</strong>, Por Favor Ingresa tus datos</div>
                     <form method="POST" class="form-horizontal" action="{{ route('login') }} "> 
                     
@@ -82,7 +83,7 @@
               
                 <div class="login-footer">
                     <div class="pull-left">
-                      {{env('APP_NAME')}}  - &copy; <?php echo date("Y") ?> 
+                        {{env('APP_NAME','Primer Bit Backoffice')}}   - &copy; <?php echo date("Y") ?> 
                     </div>
                     <div class="pull-right">
                         <a href="http://primerbit.com/" target="_blank">Contactenos</a> <!--|

@@ -16,7 +16,7 @@ class Product extends Model
 
     protected $fillable = [
         'id', 'barcode', 'desciption', 'price', 'currency_id', 'merchant_id',
-        'branch_id', 'branchSector_id', 'enable', 'user_creator', 'created_at', 'updated_at', 'deleted_at',
+        'branch_id', 'branchSector_id', 'enable', 'user_creator', 'updated_by', 'created_at', 'updated_at'
     ];
 
     public function merchants()

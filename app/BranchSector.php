@@ -15,20 +15,19 @@ class BranchSector extends Model
      */
 
     protected $fillable = [
-        'id', 'sector_name', 'branchSector_id', 'branch_id',
-        'enable', 'created_at', 'updated_at', 'deleted_at',
+        'id', 'sector_name', 'sector_description','enable', 'created_at', 'user_creator', 'updated_at', 'updated_by',  'deleted_at',
     ];
 
     
 
     public function branchOffices()
     {
-        return $this->belongsTo('App\BranchOffice', 'id');
+        return $this->belongsToMany('App\BranchOffice', 'branchOffices_branchSectors', 'branchSectors_id', 'branchOffices_Id');
     }
 
     public function readers()
     {
-        return $this->hasMany('App\Reader', 'id');
+        return $this->hasMany('App\Reader', 'branchSector_id');
     }
 
     public function products()
@@ -36,4 +35,5 @@ class BranchSector extends Model
         return $this->belongsToMany('App\Product', 'branch_sector_product', 'branchSector_id', 'product_id');
     }
 
+    
 }

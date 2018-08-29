@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use Redirect;
+use Session;
 
 class LoginController extends Controller
 {
@@ -30,12 +32,16 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-
+        $user = Auth::user()->user_name;
+        $disable = 'Lo sentimos.... El usuario ' . $user . ' Se encuentra deshabilitado';
+        //dd($user);
         if (Auth::user()->enable == 1) {
             return '/dashboard';
         } else {
             Auth::logout();
-            return '/auth.login';
+           
+           return '/';
+            //return view('auth.login', ['disable' => $disable]);
         }
 
     }

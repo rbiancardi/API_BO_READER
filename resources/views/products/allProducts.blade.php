@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-Editar Productos
+Lista Productos
 @endsection
 @section('stylesheets')
 {!!Html::style('https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css' ) !!}
@@ -26,7 +26,7 @@ Editar Productos
               <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Modificar la informacion de los Productos </h2>
+                      <h2>Listado de los Productos que se encuentran disponibles y habilitados </h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -56,8 +56,6 @@ Editar Productos
                             <th nowrap>CREADO POR</th>
                             <th nowrap>ULTIMA ACTUALIZACION</th>
                             <th nowrap>ACTUALIZADO POR</th>
-                            <th nowrap>EDITAR</th>
-                              
                           </tr>
                       </thead>
                       <tbody>
@@ -74,8 +72,6 @@ Editar Productos
                             <td>{{$product->user_creator}}</td>
                             <td>{{$product->updated_at}}</td>
                             <td>{{$product->updated_by}}</td>
-                           {{--<td><a href="{{route('ProductEdit', $product->id)}}" class="btn btn-warning glyphicon glyphicon-wrench"></a></td> --}} 
-                           <td><a href="{{route('ProductEdit', $product->id)}}" class="btn btn-warning glyphicon glyphicon-wrench" ></a></td>
                         </tr>
                       @endforeach
                     @endif     

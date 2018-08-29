@@ -20,11 +20,31 @@ class Customer extends Model
     ];
 
 
+   
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
+   
+    public function readers()
+    {
+        return $this->hasMany('App\Merchant');
+    }
+
+    public function branchOffices()
+    {
+        return $this->hasMany('App\BrancOffice');
+    }
+
     public function merchants()
     {
         return $this->hasMany('App\Merchant');
     }
 
+    public function countries()
+    {
+        return belongsToMany('App\Country');
+    }
 
 
 }

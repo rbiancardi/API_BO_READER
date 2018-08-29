@@ -47,6 +47,11 @@ class Merchant extends Model
         return $this->hasMany('App\Reader', 'merchant_id');
     }
 
+    public function sectors()
+    {
+        return $this->hasMany('App\BranchSector', 'merchant_id', 'id');
+    }
+
     public function customers()
     {
         return $this->belongsTo('App\Customer');

@@ -60,7 +60,7 @@
                       <div class="x_content">
                         <p class="text-muted font-13 m-b-30">
                           A continuacion se listas todas las transacciones que corresponden con todos los merchant_id que se encuentren habilitados en nuestra plataforma
-                          para el usuario <b>{{Auth::user()->name}} {{Auth::user()->last_name}}</b>  (Max 150 Registros por consulta).
+                          para el usuario <b>{{Auth::user()->name}} {{Auth::user()->last_name}}</b>  (Max 250 Registros por consulta).
                         </p>
                         <p>
                             <h4>Exportar Transacciones Listadas</h4>

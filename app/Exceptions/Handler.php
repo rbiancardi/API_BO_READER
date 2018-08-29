@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException as AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +47,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect()
+                   ->back()
+                   //->withInput($request->except(['password', 'password_confirmation']))
+                   ->with('error', 'El formulario Expiro debido a la inactividad en la pagina, 
+                   por favor intente nuevamente despues de loguearse. ');
+        }
+
         return parent::render($request, $exception);
+    }
+
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        return $request->expectsJson()
+                    ? response()->json(['message' => $exception->getMessage()], 401)
+                    : redirect()->guest(route('login', ['account' => $request->route('account')]));
     }
 }

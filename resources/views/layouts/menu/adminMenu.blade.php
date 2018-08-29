@@ -17,36 +17,35 @@
       </li>
       <li><a><i class="fa fa-product-hunt"></i> Productos <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <!-- <li><a href="{{-- route('products') --}}">Dashboard Productos</a></li> -->
-          <li><a href="#">Productos Habilitados</a></li>
-          <li><a href="#">Productos Deshabilitados</a></li>
+          <li><a href="{{route('products')}}">Listado de Productos</a></li>
           <li><a href="{{route('newProd')}}">Alta de Productos</a></li>
           <li><a href="{{route('editProducts')}}">Modificar Productos</a></li>
-          <li><a href="#">Deshabilitar Productos</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-barcode"></i> Lectores <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="#">Dar de Alta un Lector</a></li>
-          <li><a href="#">Editar un Lector</a></li>
-          <li><a href="#">Elimianr un Lector</a></li>
+          <li><a href="{{route('readers')}}">Listar Verificadores</a></li>
+          <li><a href="{{route('newVDP')}}">Dar de Alta un Lector</a></li>
+          <li><a href="{{route('editReaders')}}">Modificar Lectores</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-building-o"></i> Sucursales <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="#">Dar de Alta una Sucursal</a></li>
-          <li><a href="#">Editar una Sucursal</a></li>
-          <li><a href="#">Eliminar una Sucursal</a></li>
-          <li><a href="#">Crear un sector</a></li>
-          <li><a href="#">Editar un sector</a></li>
-          <li><a href="#">Eliminar un sector</a></li>
+          <li><a href="{{route('branchs')}}">Listar Sucursales</a></li>
+          <li><a href="{{route('newBranch')}}">Dar de Alta una Sucursal</a></li>
+          <li><a href="{{route('editBranchs')}}">Editar una Sucursal</a></li>
+             <li><a><i class="fas fa-industry"></i> Sectores <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                  <li><a href="{{route('sectors')}}">Listar sectores</a></li>
+                  <li><a href="{{route('newSector')}}">Crear un sector</a></li>
+                  <li><a href="{{route('editSector')}}">Editar un sector</a></li>
+              </ul>
         </ul>
       </li>
       <li><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="#">Crear un Usuario</a></li>
           <li><a href="#">Editar un Usuario</a></li>
-          <li><a href="#">Eliminar un Usuario</a></li>
           <li><a href="#">Buscar un Usuario</a></li>
           <li><a href="#">Listar Usuarios</a></li>
         </ul>
@@ -55,17 +54,14 @@
         <ul class="nav child_menu">
           <li><a href="#">Dar de alta una Publicidad</a></li>
           <li><a href="#">Editar una Publicidad</a></li>
-          <li><a href="#">Eliminar una Publicidad</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-cogs"></i>Menu Primer Bit <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="#">Dar de alta un Comercio</a></li>
           <li><a href="#">Editar un Comercio</a></li>
-          <li><a href="#">Eliminar un Comercio</a></li>
           <li><a href="#">Dar de alta un Merchant</a></li>
           <li><a href="#">Editar un Merchant</a></li>
-          <li><a href="#">Eliminar un Merchant</a></li>
         </ul>
       </li>
     </ul>
