@@ -14,7 +14,17 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = $this->getCustomers();
+
+        return view('customers.allCustomers', ['customers' => $customers]);
+    }
+
+    Public Function getCustomers()
+    {
+        $customers = Customer::all();
+
+        return $customers;
+    
     }
 
     /**

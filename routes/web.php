@@ -132,19 +132,15 @@ Route::group(array('prefix' => 'sectors'
 Route::group(array('prefix' => 'customers'
 	, 'middleware' => 'auth'), function () {
         
-    Route::get('/', 'BranchSectorController@index')->name('sectors');
+    Route::get('/', 'CustomerController@index')->name('customers');
    
     //Alta de Sector
   
-    Route::get('/newBranchSector', 'BranchSectorController@newBranchSector')->name('newSector');
-    Route::post('/newBranchSecotr', 'BranchSectorController@store')->name('storeNewSector');
-
+   
 
     //Editar Sector
 
-    Route::get('/edit', 'BranchSectorController@allSectors')->name('editSector');
-    Route::get('{id}/edit', 'BranchSectorController@showSectorUpdate')->name('sectorEdit');
-    Route::put('/update', 'BranchSectorController@sectorUpdate')->name('sectorUpdate');    
+     
 
 });
 

@@ -21,7 +21,7 @@ class County extends Model
 
     public function customers()
     {
-        return $this->belongsToMany('App\Customer');
+        return $this->belongsToMany('App\Customer', 'county_customer', 'county_id', 'customer_id');
     }
 
     public function countries()

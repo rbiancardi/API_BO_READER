@@ -58,6 +58,7 @@
       </li>
       <li><a><i class="fa fa-cogs"></i>Menu Primer Bit <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
+          <li><a href="{{route('customers')}}">Listar Comercios</a></li>
           <li><a href="#">Dar de alta un Comercio</a></li>
           <li><a href="#">Editar un Comercio</a></li>
           <li><a href="#">Dar de alta un Merchant</a></li>

@@ -23,7 +23,7 @@ class Province extends Model
 
     public function customers()
     {
-        return $this->belongsToMany('App\Customer');
+        return $this->belongsToMany('App\Customer', 'customer_province', 'customer_id', 'province_id');
     }
 
     public function countries()
